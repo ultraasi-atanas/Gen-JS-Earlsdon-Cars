@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car selector</title>
+</head>
+<body>
+
+<button onclick="outputCars()">Cars under £5,000</button>
+    
+ <script>
+
+    //This program has (at least) 5 bugs - we will go through the motions of fixing them
+    //They were all 'genuine' bugs created when I wrote this (too fast) this morning - poor attention to detail !
+
+    const cars=[]
+    cars.push({make:"Ford",model:"Fiesta",colour:"Red", price:4000, mileage:63421})
+    cars.push({make:"Daewoo",model:"Matiz",colour:"Blue", price:2000, mileage:33441})
+    cars.push({make:"Mini",model:"One",colour:"White", price:3850, mileage:48263})
+    cars.push({make:"BMW",model:"One series",colour:"Black", price:6450, mileage:51050})
+    //Add a car here - *typing* out the object
+
+    //Add another two cars using copy and paste
+
+
+    function outputCars(){
+
+        for(let i=0;i<cars.length;i++){
+
+            if (cars[i].Price<500){
+                outputCar(i)
+            }
+        }
+    }
+    
+    function outputCar(whichOne){
+        
+        const car=cars[i]
+
+        const div = document.creatElement("div")
+        div.innerHTML=`<h1>${car.Make} + ${car.model}</h1>£${car.price}`   //Excercise - Add the mileage and colour
+
+        document.body.appendChild (div)
+
+    }
+
+
+ </script>   
+</body>
+</html>
