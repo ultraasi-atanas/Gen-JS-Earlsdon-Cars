@@ -8,30 +8,58 @@
 </head>
 <body>
 
-<button onclick="outputCars()">Cars under £5,000</button>
+<!-- I think this is both the hardest, and most important thing you will learn on this course
+All these are the same !!!-->
+
+<!-- longhand named function - if  else -->
+<button onclick="outputCars(function checkPrice(c){if (c.price<3000){return true} else {return false}})">a) Cars up to £3000</button>     
+<!-- anonymous function same code.. but the function name is not required (it doesn't serve any purpose if you think about it) -->
+<button onclick="outputCars(function(c){if (c.price<3000){return true} else {return false}})">b) Cars up to £3000</button> 
+<!-- anonymous function - uses a 'truthy' expression  (to check if price<3000 - return true) -->
+<button onclick="outputCars(function(c){return (c.price<3000)})">c) Cars up to £3000</button> 
+<!-- actually, the parentheses are not required on the 'truthy' expression -->
+<button onclick="outputCars(function(c){return c.price<3000})">d) Cars up to £3000</button> 
+<!-- uses the ES6 'Fat Arrow' syntax 'c' is 'pushed into ' {code block} ...  conceptually this is *no different* from function(c){} -->
+<button onclick="outputCars(c => {return c.price<3000})">e) Cars up to £3000</button> 
+<!-- We can also ommit the braces and the Fat Arrow function will return the last thing it evaluates 'return' statement becomes redundant too-->
+<button onclick="outputCars(c => c.price<3000)">f) Cars up to £3000</button> 
+
+<!-- Arrow functions are ubiquitous in modern JavaScript - they sort the boys/girls from the men/women -->
+<!-- You won't get away with not understanding them in 2021 (although I did pretty well up to about 2019!)-->
+<!-- *All* the modern frameworks and libaries use then extensively (React, Angular, Vue)-->
+<!-- In some ways, they are 'the new SQL' -->
+
+<button onclick="outputCars(c => c.price<4000)">Cars up to £4000</button> 
+<button onclick="outputCars(c => c.price<6000)">Cars up to £6000</button> 
+
+<button onclick="customerPrice()">Cars up to</button> <input type='number' id='customerPrice'> 
+
+<div id='results'></div>
     
 <script>
-
-    //This program has (at least) 5 bugs - we will go through the motions of fixing them
-    //They were all 'genuine' bugs created when I wrote this (too fast) this morning - poor attention to detail !
-
     'use strict';
-
+    
     const cars=[] //new array
     cars.push({make:"Ford",model:"Fiesta",colour:"Red", price:4000, mileage:63421})
     cars.push({make:"Daewoo",model:"Matiz",colour:"Blue", price:2000, mileage:33441})
     cars.push({make:"Mini",model:"One",colour:"White", price:3850, mileage:48263})
     cars.push({make:"BMW",model:"One series",colour:"Black", price:6450, mileage:51050})
+    cars.push({make:"Mazda",model:"3",colour:"Blue", price:5550, mileage:58090})
     //Add a car here - *typing* out the object
 
-    //Add another two cars using copy and paste
+    
+    function customerPrice(){
+        let maxPrice = parseInt(document.getElementById("customerPrice").value)
+        outputCars(maxPrice)        
+    }
 
+    function outputCars(isMatch){
 
-    function outputCars(){
+        document.getElementById('results').innerHTML='' //Empty the results div completely (set it to an empty string)
 
         for(let i=0;i<cars.length;i++){
 
-            if (cars[i].price<5000){
+            if (isMatch(cars[i])){
                 outputCar(i)
             }
         }
@@ -40,13 +68,11 @@
     function outputCar(whichOne){
         
         const car=cars[whichOne]
-        const div = document.createElement("div")
-        
+        const div = document.createElement("div")        
         div.innerHTML=`<h1>${car.make}  ${car.model}</h1><span>£${car.price}</span>`   //Excercise - Add the mileage and colour
-
-        document.body.appendChild (div)
         
-
+        document.getElementById('results').appendChild (div)
+       
     }
 
 
