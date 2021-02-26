@@ -50,7 +50,7 @@ All these are the same !!!-->
     
     function customerPrice(){
         let maxPrice = parseInt(document.getElementById("customerPrice").value)
-        outputCars(maxPrice)        
+        outputCars(c=>c.price<=maxPrice)        
     }
 
     function outputCars(isMatch){
