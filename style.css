@@ -1,2 +1,10 @@
-#filters {display:flex;background-color:blue}
-#filters button{display:block}
+#filters {
+    display:flex;background-color:blue
+}
+#filters button{
+    display:block
+}
+
+h2 {
+    text-transform: capitalize;
+}
