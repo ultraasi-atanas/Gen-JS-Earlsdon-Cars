@@ -5,77 +5,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Car selector</title>
+    <script defer src='cars.js'></script>
+    <script defer src='main.js'></script>
+    
 </head>
 <body>
 
 <!-- I think this is both the hardest, and most important thing you will learn on this course
 All these are the same !!!-->
 
-<!-- longhand named function - if  else -->
-<button onclick="outputCars(function checkPrice(c){if (c.price<3000){return true} else {return false}})">a) Cars up to £3000</button>     
-<!-- anonymous function same code.. but the function name is not required (it doesn't serve any purpose if you think about it) -->
-<button onclick="outputCars(function(c){if (c.price<3000){return true} else {return false}})">b) Cars up to £3000</button> 
-<!-- anonymous function - uses a 'truthy' expression  (to check if price<3000 - return true) -->
-<button onclick="outputCars(function(c){return (c.price<3000)})">c) Cars up to £3000</button> 
-<!-- actually, the parentheses are not required on the 'truthy' expression -->
-<button onclick="outputCars(function(c){return c.price<3000})">d) Cars up to £3000</button> 
-<!-- uses the ES6 'Fat Arrow' syntax 'c' is 'pushed into ' {code block} ...  conceptually this is *no different* from function(c){} -->
-<button onclick="outputCars(c => {return c.price<3000})">e) Cars up to £3000</button> 
-<!-- We can also ommit the braces and the Fat Arrow function will return the last thing it evaluates 'return' statement becomes redundant too-->
-<button onclick="outputCars(c => c.price<3000)">f) Cars up to £3000</button> 
+
+<button onclick="outputCars(c => c.price<3000 && c.colour=='Red')">f) red Cars up to £3000</button> 
+<button onclick="outputCars(c => c.price>=2000 && c.price<=3000 && c.colour=='Blue')"> Blue cars from 2000 to 3000 </button> 
+<button onclick="outputCars(c => c.mileage<50000)">Low milage cars</button> 
 
 <!-- Arrow functions are ubiquitous in modern JavaScript - they sort the boys/girls from the men/women -->
 <!-- You won't get away with not understanding them in 2021 (although I did pretty well up to about 2019!)-->
 <!-- *All* the modern frameworks and libaries use then extensively (React, Angular, Vue)-->
 <!-- In some ways, they are 'the new SQL' -->
 
-<button onclick="outputCars(c => c.price<4000)">Cars up to £4000</button> 
-<button onclick="outputCars(c => c.price<6000)">Cars up to £6000</button> 
-
 <button onclick="customerPrice()">Cars up to</button> <input type='number' id='customerPrice'> 
 
 <div id='results'></div>
     
-<script>
-    'use strict';
-    
-    const cars=[] //new array
-    cars.push({make:"Ford",model:"Fiesta",colour:"Red", price:4000, mileage:63421})
-    cars.push({make:"Daewoo",model:"Matiz",colour:"Blue", price:2000, mileage:33441})
-    cars.push({make:"Mini",model:"One",colour:"White", price:3850, mileage:48263})
-    cars.push({make:"BMW",model:"One series",colour:"Black", price:6450, mileage:51050})
-    cars.push({make:"Mazda",model:"3",colour:"Blue", price:5550, mileage:58090})
-    //Add a car here - *typing* out the object
 
-    
-    function customerPrice(){
-        let maxPrice = parseInt(document.getElementById("customerPrice").value)
-        outputCars(c=>c.price<=maxPrice)        
-    }
-
-    function outputCars(isMatch){
-
-        document.getElementById('results').innerHTML='' //Empty the results div completely (set it to an empty string)
-
-        for(let i=0;i<cars.length;i++){
-
-            if (isMatch(cars[i])){
-                outputCar(i)
-            }
-        }
-    }
-    
-    function outputCar(whichOne){
-        
-        const car=cars[whichOne]
-        const div = document.createElement("div")        
-        div.innerHTML=`<h1>${car.make}  ${car.model}</h1><span>£${car.price}</span>`   //Excercise - Add the mileage and colour
-        
-        document.getElementById('results').appendChild (div)
-       
-    }
-
-
- </script>   
 </body>
 </html>
