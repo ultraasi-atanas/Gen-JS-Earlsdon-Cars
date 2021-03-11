@@ -7,25 +7,20 @@
     <title>Car selector</title>
     <script defer src='cars.js'></script>
     <script defer src='main.js'></script>
+    <link rel="stylesheet" href="style.css">
     
 </head>
 <body>
 
-<!-- I think this is both the hardest, and most important thing you will learn on this course
-All these are the same !!!-->
-
-
-<button onclick="outputCars(c => c.price<3000 && c.colour=='Red')">f) red Cars up to £3000</button> 
-<button onclick="outputCars(c => c.price>=2000 && c.price<=3000 && c.colour=='Blue')"> Blue cars from 2000 to 3000 </button> 
-<button onclick="outputCars(c => c.mileage<50000)">Low milage cars</button> 
-
-<!-- Arrow functions are ubiquitous in modern JavaScript - they sort the boys/girls from the men/women -->
-<!-- You won't get away with not understanding them in 2021 (although I did pretty well up to about 2019!)-->
-<!-- *All* the modern frameworks and libaries use then extensively (React, Angular, Vue)-->
-<!-- In some ways, they are 'the new SQL' -->
-
+<!--
+<button onclick="filterCars(c => c.price<3000)">Cheap cars</button> 
+<button onclick="filterCars(c => c.colour=='Blue')"> Blue cars </button> 
+<button onclick="filterCars(c => c.mileage<50000)">Low milage cars</button> 
 <button onclick="customerPrice()">Cars up to</button> <input type='number' id='customerPrice'> 
+-->
 
+<div id='filters'></div>
+<button onclick="resetFilters()">Reset filters</button>
 <div id='results'></div>
     
 
