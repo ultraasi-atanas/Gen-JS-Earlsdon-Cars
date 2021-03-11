@@ -16,14 +16,14 @@
 
         //scan the filtered results for distinct values of each property
         
-        let filtersDiv =document.getElementById('filters')
+        let filtersDiv = document.getElementById('filters')
         filtersDiv.innerHTML= ""
         filtersDiv.appendChild(buttonsForDistinct("make"))
         filtersDiv.appendChild(buttonsForDistinct("model"))
         filtersDiv.appendChild(buttonsForDistinct("colour"))      
+        filtersDiv.appendChild(buttonsForDistinct("year"))
         filtersDiv.appendChild(bandButtons("price"))
         filtersDiv.appendChild(bandButtons("mileage"))
-        
     }
 
 
