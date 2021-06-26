@@ -1,4 +1,8 @@
 'use strict';
+
+// CAR DATA FILE AND CAR OBJECT GENERATOR FUNCTIONS 
+
+// carsData contains 400 car entries. Scroll down to see the functions that generate new cars based on this dataset
 const carsData = [
   { make: "Alfa Romeo", model: "33", fromYear: 1983, toYear: 1995 },
   { make: "Alfa Romeo", model: "75", fromYear: 1985, toYear: 1992 },
