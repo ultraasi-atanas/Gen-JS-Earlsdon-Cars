@@ -1,5 +1,15 @@
+/* Full view elements */
+html, body, header, .view {
+    height: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    top:0;
+    background-color: #342C3C; /* for while it's loading */
+  }
+
 #filters {
-    display:flex;background-color:blue
+    display:flex;background-color:rgb(164, 164, 211)
 }
 #filters button{
     display:block
@@ -8,3 +18,34 @@
 h2 {
     text-transform: capitalize;
 }
+
+#hero-image {
+    width: 100%;
+    height: 80vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("img/hero-img.jpg"); 
+    
+    /* Position and center the image to scale nicely on all screens - note w3schools*/
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+} 
+
+#hero-text {
+    /* the old way of centering things, prior to flexbox - note Atanas*/
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+}
+
+/* FONTS  font-weight: normal|bold|bolder|lighter|number|initial|inherit; note Atanas */
+
+@font-face {
+    font-family: Hero-text;
+    src: url(https://fonts.googleapis.com/css2?family=Raleway&display=swap);
+  }
+
+  @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
